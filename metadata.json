@@ -1,0 +1,15 @@
+{
+  "name": "sergk-prometheus",
+  "version": "0.0.1",
+  "author": "Sergiy Kulanov",
+  "summary": "Deploy prometheus",
+  "license": "Apache-2.0",
+  "source": "https://github.com/sergk/puppet-prometheus",
+  "project_page": "https://github.com/sergk/puppet-prometheus",
+  "issues_url": "https://github.com/sergk/puppet-prometheus/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ],
+  "data_provider": null
+}
+
