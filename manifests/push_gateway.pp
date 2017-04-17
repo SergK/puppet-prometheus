@@ -1,5 +1,4 @@
-# == Class: prometheus::push_gateway (
-)
+# == Class: prometheus::push_gateway
 #
 class prometheus::push_gateway (
   $package_ensure = $prometheus::params::push_gateway_package_ensure,
