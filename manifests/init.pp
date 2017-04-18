@@ -15,10 +15,11 @@ class prometheus (
 
   # install and configure push_gateway as well
   if $push_gateway_enabled == true {
+    # we don't need notify prometheus service since file service discovery
+    # will do it on his own: https://prometheus.io/docs/operating/configuration/#%3Cfile_sd_config%3E
+    # > Changes to all defined files are detected via disk watches and applied
+    # > immediately
     include ::prometheus::push_gateway
-    # let's reload service since we add push_gateway target
-    Class['::prometheus::push_gateway']
-    ~> Class['::prometheus::service']
   }
 
 }
