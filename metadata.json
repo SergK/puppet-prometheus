@@ -1,6 +1,6 @@
 {
   "name": "sergk-prometheus",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Sergiy Kulanov",
   "summary": "Deploy prometheus",
   "license": "Apache-2.0",
