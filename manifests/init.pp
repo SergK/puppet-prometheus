@@ -2,7 +2,7 @@
 # ===========================
 #
 class prometheus (
-  $push_gateway_enabled = $prometheus::params::push_gateway_enabled
+  $push_gateway_enabled = $::prometheus::params::push_gateway_enabled
 
 ) inherits prometheus::params {
 

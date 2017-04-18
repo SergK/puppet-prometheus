@@ -1,11 +1,12 @@
 # == Class: prometheus::push_gateway
 #
 class prometheus::push_gateway (
-  $package_ensure = $prometheus::params::push_gateway_package_ensure,
-  $package_name   = $prometheus::params::push_gateway_package_name,
-  $service_enable = true,
-  $service_ensure = 'running',
-  $service_manage = true,
+  $file_sd_config_path = $::prometheus::params::file_sd_config_dir,
+  $package_ensure      = $::prometheus::params::push_gateway_package_ensure,
+  $package_name        = $::prometheus::params::push_gateway_package_name,
+  $service_enable      = true,
+  $service_ensure      = 'running',
+  $service_manage      = true,
 ) inherits prometheus::params {
 
   if ! ($service_ensure in [ 'running', 'stopped' ]) {
@@ -25,4 +26,12 @@ class prometheus::push_gateway (
       require    => Package[$package_name],
     }
   }
+
+  # add push_gw monitoring
+  file { "${file_sd_config_path}/push_gateway.yml":
+    content => template('prometheus/push_gateway.yml.erb'),
+    require => File[$file_sd_config_path],
+    mode    => '0644',
+  }
+
 }

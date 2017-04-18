@@ -1,8 +1,8 @@
 # == Class: prometheus::config
 #
 class prometheus::config (
-  $config_path = $prometheus::params::config_dir,
-  $file_sd_config_path = $prometheus::params::file_sd_config_dir,
+  $config_path         = $::prometheus::params::config_dir,
+  $file_sd_config_path = $::prometheus::params::file_sd_config_dir,
 ) inherits prometheus::params {
 
   # though this should be managed by package, let's ensure that it exists
@@ -25,12 +25,4 @@ class prometheus::config (
     mode    => '0755',
     require => File[$config_path],
   }
-
-  # add push_gw monitoring
-  file { "${file_sd_config_path}/push_gateway.yml":
-    content => template('prometheus/push_gateway.yml.erb'),
-    require => File[$file_sd_config_path],
-    mode    => '0644',
-  }
-
 }
