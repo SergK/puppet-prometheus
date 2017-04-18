@@ -2,8 +2,9 @@
 # ===========================
 #
 class prometheus (
-  $push_gateway_enabled = $prometheus::params::push_gateway_enabled
-
+  $global_config        = $::prometheus::params::global_config,
+  $push_gateway_enabled = $::prometheus::params::push_gateway_enabled,
+  $scrape_configs       = $::prometheus::params::scrape_configs,
 ) inherits prometheus::params {
 
   contain prometheus::install

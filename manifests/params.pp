@@ -14,5 +14,19 @@ class prometheus::params {
   $service_ensure              = 'running'
   $service_manage              = true
   $storage_path                = '/var/lib/prometheus'
+  $global_config               = {
+      'scrape_interval'     => '15s',
+      'evaluation_interval' => '15s',
+      'external_labels'     => { 'monitor'=>'master'},
+  },
+  $scrape_configs              = [ {
+      'job_name'        => 'prometheus',
+      'scrape_interval' => '10s',
+      'scrape_timeout'  => '10s',
+      'static_configs'  => [ {
+        'targets' => [ 'localhost:9090' ],
+        'labels'  => { 'alias'=> 'Prometheus'}
+      } ]
+  } ]
 
 }
