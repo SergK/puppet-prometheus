@@ -1,0 +1,12 @@
+# managed by puppet
+- targets:
+    <%- @targets.each do |target| -%>
+    - <%= target %>
+    <%- end -%>
+  labels:
+    job: <%= @name %>
+<% unless @labels.nil? -%>
+  <%- @labels.each do |value| -%>
+    <%= value[0] %>: <%= value[1] %>
+  <%- end -%>
+<%- end -%>
